@@ -19,9 +19,7 @@ package net.ishchenko.idea.nginx.formatter;
 import com.intellij.formatting.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
 import net.ishchenko.idea.nginx.formatter.blocks.NginxBlock;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,15 +32,14 @@ import org.jetbrains.annotations.NotNull;
 public class NginxFormattingModelBuilder implements FormattingModelBuilder {
 
     @NotNull
-    public FormattingModel createModel(PsiElement element, CodeStyleSettings settings) {
-
-        ASTNode node = element.getNode();
+    public FormattingModel createModel(@NotNull FormattingContext formattingContext) {
+        ASTNode node = formattingContext.getNode();
         assert node != null;
-        PsiFile containingFile = element.getContainingFile();
+        PsiFile containingFile = formattingContext.getContainingFile();
         ASTNode astNode = containingFile.getNode();
         assert astNode != null;
 
-        return FormattingModelProvider.createFormattingModelForPsiFile(containingFile, new NginxBlock(node, Indent.getAbsoluteNoneIndent(), null), settings);
+        return FormattingModelProvider.createFormattingModelForPsiFile(containingFile, new NginxBlock(node, Indent.getAbsoluteNoneIndent(), null), formattingContext.getCodeStyleSettings());
 
     }
 

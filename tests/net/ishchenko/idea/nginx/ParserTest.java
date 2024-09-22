@@ -1,7 +1,6 @@
 package net.ishchenko.idea.nginx;
 
 import com.intellij.lang.Language;
-import com.intellij.lang.LanguageExtension;
 import com.intellij.testFramework.ParsingTestCase;
 import net.ishchenko.idea.nginx.parser.NginxParserDefinition;
 
@@ -34,8 +33,4 @@ public class ParserTest extends ParsingTestCase {
         return true;
     }
 
-    @Override
-    protected <T> void addExplicitExtension(LanguageExtension<T> instance, Language language, T object) {
-        super.addExplicitExtension(instance, language, object);
-    }
 }

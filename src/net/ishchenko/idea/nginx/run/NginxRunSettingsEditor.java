@@ -75,8 +75,8 @@ public class NginxRunSettingsEditor extends SettingsEditor<NginxRunConfiguration
             NginxConfigurationManager configManager = NginxConfigurationManager.getInstance();
             String dimensionServiceKey = "#" + configManager.getDisplayName().replaceAll("\n", "_").replaceAll(" ", "_");
             DimensionService dimensionService = DimensionService.getInstance();
-            if (dimensionService.getSize(dimensionServiceKey) == null) {
-                dimensionService.setSize(dimensionServiceKey, new Dimension(750, 500));
+            if (dimensionService.getSize(dimensionServiceKey, config.getProject()) == null) {
+                dimensionService.setSize(dimensionServiceKey, new Dimension(750, 500), config.getProject());
             }
 
             SingleConfigurableEditor editor = new SingleConfigurableEditor(form.panel, configManager, dimensionServiceKey);

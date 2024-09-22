@@ -36,6 +36,8 @@ public class NginxConfigurationType implements ConfigurationType {
 
     NginxConfigurationFactory ncf = new NginxConfigurationFactory(this);
 
+    public static final String ID = "net.ishchenko.idea.nginx.configuration";
+
     @NotNull
     @Override
     public String getDisplayName() {
@@ -55,7 +57,7 @@ public class NginxConfigurationType implements ConfigurationType {
     @Override
     @NotNull
     public String getId() {
-        return "nginx.configuration.type";
+        return ID;
     }
 
     @Override
@@ -79,7 +81,7 @@ public class NginxConfigurationType implements ConfigurationType {
         @NotNull
         @Override
         public String getId() {
-            return "net.ishchenko.idea.nginx.run";
+            return NginxConfigurationType.ID;
         }
     }
 }
